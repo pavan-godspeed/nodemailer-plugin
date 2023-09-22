@@ -1,0 +1,22 @@
+id: email
+on_error: 
+  continue: false
+  responses:
+    code: 500
+    success: false
+    data: "Error in sending mail."
+tasks:
+  - id: fist_task
+    fn: datasource.email.send
+    args:
+      from: killadapavankumar@gmail.com
+      to: shirishanelapogula@gmail.com
+      subject: "Be Strong"
+      text: "Strength and courage aren't measured by gender but by the fire that burns within. Keep blazing your trail, my fearless friend :)"
+
+  - id: return_status
+    fn: com.gs.transform
+    args: 
+      code: 200
+      success: true
+      data: "Email sent successfully."
